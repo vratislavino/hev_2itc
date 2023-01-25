@@ -146,7 +146,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fd75b1b532c30ff408771cd6ebceea3d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3417786969097242775}
   - component: {fileID: 3417786969097242774}
-  - component: {fileID: 3417786969097242769}
+  - component: {fileID: 6784720406422823464}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -238,7 +238,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3417786969097242769
+--- !u!114 &6784720406422823464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,10 +247,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3417786969097242772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d63f145f09e9af04e89e4a0717efb57d, type: 3}
+  m_Script: {fileID: 11500000, guid: 38008ede7d3fd1c4782878a6374175cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolDuration: 5
   materials:
   - {fileID: 2100000, guid: 54d8dffe25276514793470adb6aee632, type: 2}
   - {fileID: 2100000, guid: f1e22de34c5c5194992b7a6798e285fe, type: 2}

@@ -3,31 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSymbol : MonoBehaviour
+public class PlayerSymbol : StaticSymbol
 {
-    private Symbol currentSymbol;
-
-    public Symbol CurrentSymbol {
-        get { return currentSymbol; }
-        set {
-            currentSymbol = value;
-            quadRenderer.material = materials[(int)currentSymbol];
-        }
-    }
 
     [SerializeField]
     private float symbolDuration = 1f;
 
-    [SerializeField]
-    private List<Material> materials;
-
-    [SerializeField]
-    private MeshRenderer quadRenderer;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        CurrentSymbol = GenerateRandomSymbol();
+    protected override void Start() {
+        base.Start();
 
         StartCoroutine(SwitchSymbol());
     }
@@ -37,11 +20,6 @@ public class PlayerSymbol : MonoBehaviour
             yield return new WaitForSeconds(symbolDuration);
             CurrentSymbol = GenerateNextSymbol();
         }
-    }
-
-    private Symbol GenerateRandomSymbol() {
-        int rand = UnityEngine.Random.Range(0, 3);
-        return (Symbol) rand;
     }
 
     private Symbol GenerateNextSymbol() {

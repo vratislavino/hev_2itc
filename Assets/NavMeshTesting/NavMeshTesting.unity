@@ -123,6 +123,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 28dab7322412a47459b9675db5d6b36b, type: 2}
+--- !u!1 &176161194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3417786969097242772, guid: c4b72363461efb5468f623c3afd89051, type: 3}
+  m_PrefabInstance: {fileID: 979872523670549455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &176161198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176161194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c26eb457c0cb94385f260f69e71ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &229652715
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,10 +555,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3417786967913088288, guid: c4b72363461efb5468f623c3afd89051, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fd75b1b532c30ff408771cd6ebceea3d, type: 2}
     - target: {fileID: 3417786969097242772, guid: c4b72363461efb5468f623c3afd89051, type: 3}
       propertyPath: m_Name
       value: Enemy
