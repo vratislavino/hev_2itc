@@ -9,6 +9,10 @@ public class PlayerSymbol : StaticSymbol
     [SerializeField]
     private float symbolDuration = 1f;
 
+    private void Awake() {
+        GameManager.Instance.SetPlayerReference(this);
+    }
+
     protected override void Start() {
         base.Start();
 

@@ -21,6 +21,10 @@ public class StaticSymbol : MonoBehaviour
     [SerializeField]
     protected MeshRenderer quadRenderer;
 
+    private void Awake() {
+        GameManager.Instance.AddEnemyToList(this);
+    }
+
     // Start is called before the first frame update
     protected virtual void Start() {
         CurrentSymbol = GenerateRandomSymbol();

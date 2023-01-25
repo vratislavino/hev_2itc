@@ -17,11 +17,6 @@ public class StateManager : MonoBehaviour
 
     private void ChangeState(State newState) {
         currentState = newState;
-        currentState.CorutineRequested += OnCorutineRequested;
-    }
-
-    private void OnCorutineRequested(Func<IEnumerator> routine) {
-        StartCoroutine(routine());
     }
 
     // Update is called once per frame
