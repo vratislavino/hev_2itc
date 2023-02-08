@@ -34,6 +34,33 @@ public class PlayerSymbol : StaticSymbol
         
         return newSymbol;
     }
+
+    public bool WouldEnemyWin(Symbol enemy) {
+        if (CurrentSymbol == Symbol.Paper)
+            return enemy == Symbol.Scissors;
+        if (CurrentSymbol == Symbol.Rock)
+            return enemy == Symbol.Paper;
+        if (CurrentSymbol == Symbol.Scissors)
+            return enemy == Symbol.Rock;
+
+        return false;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+
+        var enemy = other.GetComponentInParent<StaticSymbol>();
+        if (enemy != null) {
+            if (enemy.CurrentSymbol == CurrentSymbol)
+                return;
+
+            if(WouldEnemyWin(enemy.CurrentSymbol)) {
+                Debug.Log("Prohrál jsi!");
+                Time.timeScale = 0;
+            } else {
+                Destroy(enemy.gameObject);
+            }
+        }
+    }
 }
 
 public enum Symbol

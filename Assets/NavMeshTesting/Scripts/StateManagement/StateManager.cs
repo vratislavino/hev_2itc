@@ -12,7 +12,12 @@ public class StateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ChangeState(new RandomMovementState(GetComponent<NavMeshAgent>()));
+        var agent = GetComponent<NavMeshAgent>();
+        var symbol = GetComponent<StaticSymbol>();
+
+        ChangeState(
+            new RandomMovementState(agent, symbol)
+            );
     }
 
     private void ChangeState(State newState) {
@@ -23,5 +28,9 @@ public class StateManager : MonoBehaviour
     void Update()
     {
         currentState.DoStep();
+        var newState = currentState.TryToChangeState();
+        if(newState != null) {
+            ChangeState(newState);
+        }
     }
 }

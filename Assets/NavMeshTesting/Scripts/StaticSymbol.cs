@@ -16,6 +16,9 @@ public class StaticSymbol : MonoBehaviour
     }
 
     [SerializeField]
+    ParticleSystem blood;
+
+    [SerializeField]
     protected List<Material> materials;
 
     [SerializeField]
@@ -23,6 +26,12 @@ public class StaticSymbol : MonoBehaviour
 
     private void Awake() {
         GameManager.Instance.AddEnemyToList(this);
+    }
+
+    private void OnDestroy() {
+        
+        GameManager.Instance.RemoveEnemyFromList(this);
+        var a = Instantiate(blood, transform.position, Quaternion.identity);
     }
 
     // Start is called before the first frame update

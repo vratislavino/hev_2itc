@@ -11,7 +11,7 @@ public class RandomMovementState : State
     Vector3 lastPosition;
     Quaternion lastRotation;
 
-    public RandomMovementState(NavMeshAgent agent) : base(agent) {
+    public RandomMovementState(NavMeshAgent agent, StaticSymbol symbol) : base(agent, symbol) {
         targetPoint = GenerateRandomPoint();
         characterAgent.SetDestination(targetPoint);
     }
@@ -40,7 +40,15 @@ public class RandomMovementState : State
     }
 
     public override State TryToChangeState() {
-        // try to change state based on player position
+        if(Vector3.Distance(
+            characterAgent.transform.position, 
+            GameManager.Instance.PlayerReference.transform.position
+            ) < 10) {
+            if (symbol.CurrentSymbol == GameManager.Instance.PlayerReference.CurrentSymbol)
+                return null;
+            return new FightMovementState(characterAgent, symbol);
+        }
+
         return null;
     }
 }

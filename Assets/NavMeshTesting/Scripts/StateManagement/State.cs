@@ -7,9 +7,11 @@ using UnityEngine.AI;
 public abstract class State
 {
     protected NavMeshAgent characterAgent;
+    protected StaticSymbol symbol;
 
-    public State(NavMeshAgent agent) {
+    public State(NavMeshAgent agent, StaticSymbol symbol) {
         this.characterAgent = agent;
+        this.symbol = symbol;
     }
 
     public abstract void DoStep();
