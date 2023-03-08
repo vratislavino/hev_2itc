@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,11 @@ public class Movement2D : MonoBehaviour
 
     [SerializeField]
     private float speed = 7;
+
+    internal void AddPoint() {
+        Debug.Log("Collected");
+        //throw new NotImplementedException();
+    }
 
     // Start is called before the first frame update
     void Start()
