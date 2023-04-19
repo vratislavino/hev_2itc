@@ -10,21 +10,43 @@ public class Movement2D : MonoBehaviour
     [SerializeField]
     private float speed = 7;
 
+    [SerializeField]
+    private float jumpForce = 7;
+
+    [SerializeField]
+    private Transform groundChecker;
+
+    [SerializeField]
+    private LayerMask floorLayerMask;
+
+    private bool isGrounded = false;
+    private bool jumpedInAir = false;
+
     internal void AddPoint() {
         Debug.Log("Collected");
-        //throw new NotImplementedException();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    private void CheckIsGrounded() {
+        var hit = Physics2D.Raycast(groundChecker.position, Vector2.down, 0.1f, floorLayerMask);
+        if(hit.collider != null) {
+            isGrounded = true;
+            jumpedInAir = false;
+        } else {
+            isGrounded = false;
+        }
+    }
+
     void Update()
     {
+        CheckIsGrounded();
+
         float xMove = 0;
+        float yMove = rb.velocity.y;
 
         if(Input.GetKey(KeyCode.D)) {
             xMove = speed;
@@ -33,6 +55,17 @@ public class Movement2D : MonoBehaviour
             xMove = -speed;
         }
 
-        rb.velocity = new Vector2(xMove, rb.velocity.y);
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) {
+            if (isGrounded) {
+                yMove = jumpForce;
+            } else {
+                if(!jumpedInAir) {
+                    yMove = jumpForce;
+                    jumpedInAir = true;
+                }
+            }
+        }
+
+        rb.velocity = new Vector2(xMove, yMove);
     }
 }
