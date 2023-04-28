@@ -5,12 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Chest2D : MonoBehaviour
 {
-    private SpriteRenderer rend;
-
-    [SerializeField]
-    private Sprite openedChest;
-    [SerializeField]
-    private Sprite closedChest;
+    private Animator chestAnimator;
 
     [SerializeField]
     private string levelToLoad;
@@ -18,16 +13,16 @@ public class Chest2D : MonoBehaviour
     bool isOpened = false;
 
     private void Start() {
-        rend = GetComponent<SpriteRenderer>();
+        chestAnimator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        rend.sprite = openedChest;
+        chestAnimator.SetBool("Opening", true);
         isOpened = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        rend.sprite = closedChest;
+        chestAnimator.SetBool("Opening", false);
         isOpened = false;
     }
 
