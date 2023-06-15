@@ -22,6 +22,12 @@ public class Movement2D : MonoBehaviour
     private bool isGrounded = false;
     private bool jumpedInAir = false;
 
+    private SpeedBuff speedBuff = null;
+    public SpeedBuff SpeedBuff {
+        get { return speedBuff; }
+        set { speedBuff = value; }
+    }
+
     internal void AddPoint() {
         Debug.Log("Collected");
     }
@@ -54,6 +60,9 @@ public class Movement2D : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) {
             xMove = -speed;
         }
+
+        if (SpeedBuff != null)
+            xMove *= SpeedBuff.GetMultiplier();
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) {
             if (isGrounded) {
